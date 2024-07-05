@@ -5,6 +5,7 @@ const numberOfPizzasTotal = require("../src/objects/numberOfPizzasTotal");
 const ORDER_TYPES = require("../src/objects/orderTypes");
 const numberOfPizzasEnum = require("../src/objects/numberOfPizzasEnum");
 const numberOfKeys = require("../src/objects/numberOfKeys");
+const removeSecret = require("../src/objects/removeSecret");
 
 describe("order", () => {
   it("should have a number of pizzas", () => {
@@ -150,5 +151,19 @@ describe("numberOfKeys", () => {
 
   it("should handle an object with 3 properties", () => {
     assert.equal(numberOfKeys({ a: 1, b: 2, c: 3 }), 3);
+  });
+});
+
+describe("removeSecret", () => {
+  it("should remove the secret", () => {
+    const person = {
+      name: "Alice",
+      secret: "afraid of the dark",
+    };
+
+    removeSecret(person);
+
+    assert.equal(person.name, "Alice");
+    assert.equal(person.secret, undefined);
   });
 });
