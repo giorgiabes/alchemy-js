@@ -2,6 +2,7 @@ const { assert } = require("chai");
 const startsWithX = require("../src/string-manipulation/startsWithX");
 const endsWithW = require("../src/string-manipulation/endsWithX");
 const isAllX = require("../src/string-manipulation/isAllX");
+const findFirstX = require("../src/string-manipulation/findFirstX");
 
 describe("startsWithX", () => {
   it("should return true for a string starting with a lower case x", () => {
@@ -51,5 +52,15 @@ describe("isAllX", () => {
     assert.equal(isAllX("Xxxpizza"), false);
     assert.equal(isAllX("xPizzaX"), false);
     assert.equal(isAllX("XxxxQxxxX"), false);
+  });
+});
+
+describe("findFirstX", () => {
+  it("should find the first x in a short string", () => {
+    assert.equal(findFirstX("abcx"), 3);
+  });
+
+  it("should find the first x in a long string", () => {
+    assert.equal(findFirstX("should find the first x in a long string"), 22);
   });
 });
