@@ -1,6 +1,7 @@
+const { assert } = require("chai");
 const startsWithX = require("../src/string-manipulation/startsWithX");
 const endsWithW = require("../src/string-manipulation/endsWithX");
-const { assert } = require("chai");
+const isAllX = require("../src/string-manipulation/isAllX");
 
 describe("startsWithX", () => {
   it("should return true for a string starting with a lower case x", () => {
@@ -30,5 +31,25 @@ describe("endsWithX", () => {
 
   it("should return false for a string not ending withx", () => {
     assert.equal(endsWithW("pizza"), false);
+  });
+});
+
+describe("isAllX", () => {
+  it("should return true for all lower case x", () => {
+    assert.equal(isAllX("xxxx"), true);
+  });
+
+  it("should return true for all upper case x", () => {
+    assert.equal(isAllX("X"), true);
+  });
+
+  it("should return true for a mix of x casing", () => {
+    assert.equal(isAllX("XxXxXXXxx"), true);
+  });
+
+  it("should return false for non-x strings", () => {
+    assert.equal(isAllX("Xxxpizza"), false);
+    assert.equal(isAllX("xPizzaX"), false);
+    assert.equal(isAllX("XxxxQxxxX"), false);
   });
 });
