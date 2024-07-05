@@ -3,6 +3,7 @@ const array = require("../src/arrays/array");
 const hasOne = require("../src/arrays/hasOne");
 const sumEven = require("../src/arrays/sumEven");
 const unique = require("../src/arrays/unique");
+const addOne = require("../src/arrays/addOne");
 
 describe("array", () => {
   it("should be an array of length 3", () => {
@@ -60,5 +61,40 @@ describe("unique", () => {
     const original = [1, 1, 1, 1, 1, 1, 1];
     assert.sameMembers(unique(original), [1]);
     assert.equal(original.length, 7, "the original array should be unmodified");
+  });
+});
+
+describe("addOne", () => {
+  it("should handle a single element array", () => {
+    const array = [1];
+    const returned = addOne(array);
+    assert.equal(
+      returned,
+      undefined,
+      "the function should not return anything"
+    );
+    assert.sameMembers(array, [2]);
+  });
+
+  it("should handle an array with a few sequential elements", () => {
+    const array = [1, 2, 3];
+    const returned = addOne(array);
+    assert.equal(
+      returned,
+      undefined,
+      "the function should not return anything"
+    );
+    assert.sameMembers(array, [2, 3, 4]);
+  });
+
+  it("should handle a larger array", () => {
+    const array = [9, 12, 14, 16, 19];
+    const returned = addOne(array);
+    assert.equal(
+      returned,
+      undefined,
+      "the function should not return anything"
+    );
+    assert.sameMembers(array, [10, 13, 15, 17, 20]);
   });
 });
