@@ -2,6 +2,7 @@ const { assert } = require("chai");
 const array = require("../src/arrays/array");
 const hasOne = require("../src/arrays/hasOne");
 const sumEven = require("../src/arrays/sumEven");
+const unique = require("../src/arrays/unique");
 
 describe("array", () => {
   it("should be an array of length 3", () => {
@@ -41,5 +42,23 @@ describe("sumEven", () => {
 
   it("should handle a larger array", () => {
     assert.equal(sumEven([9, 12, 14, 16, 19]), 42);
+  });
+});
+
+describe("unique", () => {
+  it("should return an array with all unique elements", () => {
+    assert.sameMembers(unique([1, 2, 3]), [1, 2, 3]);
+  });
+
+  it("should handle an array with a few duplicates", () => {
+    const original = [1, 2, 2, 3, 4, 3];
+    assert.sameMembers(unique(original), [1, 2, 3, 4]);
+    assert.equal(original.length, 6, "the original array should be unmodified");
+  });
+
+  it("should handle a larger array with only duplicates", () => {
+    const original = [1, 1, 1, 1, 1, 1, 1];
+    assert.sameMembers(unique(original), [1]);
+    assert.equal(original.length, 7, "the original array should be unmodified");
   });
 });
