@@ -4,6 +4,7 @@ const numberOfPizzas = require("../src/objects/numberOfPizzas");
 const numberOfPizzasTotal = require("../src/objects/numberOfPizzasTotal");
 const ORDER_TYPES = require("../src/objects/orderTypes");
 const numberOfPizzasEnum = require("../src/objects/numberOfPizzasEnum");
+const numberOfKeys = require("../src/objects/numberOfKeys");
 
 describe("order", () => {
   it("should have a number of pizzas", () => {
@@ -139,5 +140,15 @@ describe("numberOfPizzasEnum", () => {
     it("should return the number of pizzas", () => {
       assert.equal(numberOfPizzasEnum(orders), 3);
     });
+  });
+});
+
+describe("numberOfKeys", () => {
+  it("should handle an object with 1 property", () => {
+    assert.equal(numberOfKeys({ prop: 1 }), 1);
+  });
+
+  it("should handle an object with 3 properties", () => {
+    assert.equal(numberOfKeys({ a: 1, b: 2, c: 3 }), 3);
   });
 });
