@@ -3,6 +3,7 @@ const startsWithX = require("../src/string-manipulation/startsWithX");
 const endsWithW = require("../src/string-manipulation/endsWithX");
 const isAllX = require("../src/string-manipulation/isAllX");
 const findFirstX = require("../src/string-manipulation/findFirstX");
+const splitAtX = require("../src/string-manipulation/splitAtX");
 
 describe("startsWithX", () => {
   it("should return true for a string starting with a lower case x", () => {
@@ -62,5 +63,20 @@ describe("findFirstX", () => {
 
   it("should find the first x in a long string", () => {
     assert.equal(findFirstX("should find the first x in a long string"), 22);
+  });
+});
+
+describe("splitAtX", () => {
+  it("should handle the first half being longer", () => {
+    assert.equal(splitAtX("Happyxdays"), "Happy");
+    assert.equal(splitAtX("before the x is long"), "before the ");
+  });
+
+  it("should handle the second half being longer", () => {
+    assert.equal(splitAtX("10xDeveloper"), "Developer");
+    assert.equal(
+      splitAtX("before the x is shorter than after"),
+      " is shorter than after"
+    );
   });
 });
