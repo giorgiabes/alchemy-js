@@ -1,0 +1,17 @@
+{
+  "name": "alchemy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha 'tests/**/*.test.js'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "ethereum-cryptography": "^2.2.1",
+    "mocha": "^10.6.0"
+  }
+}
