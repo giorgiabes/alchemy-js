@@ -1,6 +1,7 @@
 const { assert } = require("chai");
 const order = require("../src/objects/order");
 const numberOfPizzas = require("../src/objects/numberOfPizzas");
+const numberOfPizzasTotal = require("../src/objects/numberOfPizzasTotal");
 
 describe("order", () => {
   it("should have a number of pizzas", () => {
@@ -27,7 +28,7 @@ describe("order", () => {
   });
 });
 
-describe.only("order", () => {
+describe("order", () => {
   describe("1 pizzas", () => {
     const order = {
       pizzas: 1,
@@ -49,6 +50,24 @@ describe.only("order", () => {
 
     it("should return the number of pizzas", () => {
       assert.equal(numberOfPizzas(order), order.pizzas);
+    });
+  });
+});
+
+describe("numberOfPizzasTotal", () => {
+  describe("a single order", () => {
+    const orders = [{ pizzas: 3 }];
+
+    it("should return the number of pizzas", () => {
+      assert.equal(numberOfPizzasTotal(orders), 3);
+    });
+  });
+
+  describe("many orders", () => {
+    const orders = [{ pizzas: 3 }, { pizzas: 5 }, { pizzas: 10 }];
+
+    it("should return the number of pizzas", () => {
+      assert.equal(numberOfPizzasTotal(orders), 18);
     });
   });
 });
