@@ -3,6 +3,7 @@ const order = require("../src/objects/order");
 const numberOfPizzas = require("../src/objects/numberOfPizzas");
 const numberOfPizzasTotal = require("../src/objects/numberOfPizzasTotal");
 const ORDER_TYPES = require("../src/objects/orderTypes");
+const numberOfPizzasEnum = require("../src/objects/numberOfPizzasEnum");
 
 describe("order", () => {
   it("should have a number of pizzas", () => {
@@ -73,7 +74,7 @@ describe("numberOfPizzasTotal", () => {
   });
 });
 
-describe.only("ORDER_TYPES", () => {
+describe("ORDER_TYPES", () => {
   it("should have at least three keys", () => {
     const keys = Object.keys(ORDER_TYPES);
     assert.isAbove(keys.length, 2);
@@ -107,6 +108,36 @@ describe.only("ORDER_TYPES", () => {
         values.indexOf(value) === index,
         `Each value must be unique, found two ${value} values!`
       );
+    });
+  });
+});
+
+describe("numberOfPizzasEnum", () => {
+  describe("just pizza", () => {
+    const orders = [
+      { pizzas: 3, type: ORDER_TYPES.PIZZA, extraCheese: true },
+      { pizzas: 5, type: ORDER_TYPES.PIZZA, extraCheese: false },
+      { pizzas: 10, type: ORDER_TYPES.PIZZA, extraCheese: true },
+    ];
+
+    it("should return the number of pizzas", () => {
+      assert.equal(numberOfPizzasEnum(orders), 18);
+    });
+  });
+
+  const keys = Object.keys(ORDER_TYPES);
+  describe(keys.join(", "), () => {
+    const orders = keys.reduce(
+      (arr, key) => {
+        return arr.concat({
+          type: key,
+        });
+      },
+      [{ pizzas: 3, type: ORDER_TYPES.PIZZA }]
+    );
+
+    it("should return the number of pizzas", () => {
+      assert.equal(numberOfPizzasEnum(orders), 3);
     });
   });
 });
