@@ -4,6 +4,7 @@ const countC = require("../src/ch/countC");
 const countVowels = require("../src/ch/countVowels");
 const reverse = require("../src/ch/reverse");
 const isPalindrome = require("../src/ch/isPalindrome");
+const sumTogether = require("../src/ch/sumTogether");
 
 const modifyErr =
   "Whoops! Create a new array, do not modify the original array.";
@@ -117,5 +118,21 @@ describe("isPalindrome", () => {
     it("should return false", () => {
       assert.equal(isPalindrome("representative"), false);
     });
+  });
+});
+
+describe("sumTogether", () => {
+  it("should return an empty array", () => {
+    const arr1 = [];
+    const arr2 = [];
+    const result = sumTogether(arr1, arr2);
+    assert.deepEqual(result, []);
+  });
+
+  it("should return an array of summed elements", () => {
+    const arr1 = [10, 20, 30];
+    const arr2 = [15, 25, 35];
+    const result = sumTogether(arr1, arr2);
+    assert.deepEqual(result, [25, 45, 65]);
   });
 });
