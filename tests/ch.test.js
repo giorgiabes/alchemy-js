@@ -5,6 +5,7 @@ const countVowels = require("../src/ch/countVowels");
 const reverse = require("../src/ch/reverse");
 const isPalindrome = require("../src/ch/isPalindrome");
 const sumTogether = require("../src/ch/sumTogether");
+const countElements = require("../src/ch/countElements");
 
 const modifyErr =
   "Whoops! Create a new array, do not modify the original array.";
@@ -134,5 +135,19 @@ describe("sumTogether", () => {
     const arr2 = [15, 25, 35];
     const result = sumTogether(arr1, arr2);
     assert.deepEqual(result, [25, 45, 65]);
+  });
+});
+
+describe("countElements", () => {
+  it("should return an empty object", () => {
+    const elements = [];
+    const result = countElements(elements);
+    assert.deepEqual(result, {});
+  });
+
+  it("should return an object of non-duplicative element counts", () => {
+    const elements = ["a", "a", "b", "c", "b", "d"];
+    const result = countElements(elements);
+    assert.deepEqual(result, { a: 2, b: 2, c: 1, d: 1 });
   });
 });
