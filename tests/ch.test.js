@@ -3,6 +3,7 @@ const halfValue = require("../src/ch/halfValue");
 const countC = require("../src/ch/countC");
 const countVowels = require("../src/ch/countVowels");
 const reverse = require("../src/ch/reverse");
+const isPalindrome = require("../src/ch/isPalindrome");
 
 const modifyErr =
   "Whoops! Create a new array, do not modify the original array.";
@@ -86,5 +87,35 @@ describe("reverse", () => {
 
   it("should reverse a long string", () => {
     assert.equal(reverse("macintosh"), "hsotnicam");
+  });
+});
+
+describe("isPalindrome", () => {
+  describe("is a palindrome", () => {
+    it("should return true", () => {
+      assert.equal(isPalindrome("pop"), true);
+    });
+
+    it("should return true", () => {
+      assert.equal(isPalindrome("kayak"), true);
+    });
+
+    it("should return true", () => {
+      assert.equal(isPalindrome("racecar"), true);
+    });
+  });
+
+  describe("is not a palindrome", () => {
+    it("should return false", () => {
+      assert.equal(isPalindrome("bear"), false);
+    });
+
+    it("should return false", () => {
+      assert.equal(isPalindrome("pizza"), false);
+    });
+
+    it("should return false", () => {
+      assert.equal(isPalindrome("representative"), false);
+    });
   });
 });
