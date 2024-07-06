@@ -2,6 +2,7 @@ const { assert } = require("chai");
 const halfValue = require("../src/ch/halfValue");
 const countC = require("../src/ch/countC");
 const countVowels = require("../src/ch/countVowels");
+const reverse = require("../src/ch/reverse");
 
 const modifyErr =
   "Whoops! Create a new array, do not modify the original array.";
@@ -71,5 +72,19 @@ describe("countVowels", () => {
     it("should only count vowels", () => {
       assert.equal(countVowels("apple"), 2);
     });
+  });
+});
+
+describe("reverse", () => {
+  it("should return an empty string", () => {
+    assert.equal(reverse(""), "");
+  });
+
+  it("should reverse a short string", () => {
+    assert.equal(reverse("cat"), "tac");
+  });
+
+  it("should reverse a long string", () => {
+    assert.equal(reverse("macintosh"), "hsotnicam");
   });
 });
