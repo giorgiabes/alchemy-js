@@ -1,6 +1,7 @@
 const { assert } = require("chai");
 const halfValue = require("../src/ch/halfValue");
 const countC = require("../src/ch/countC");
+const countVowels = require("../src/ch/countVowels");
 
 const modifyErr =
   "Whoops! Create a new array, do not modify the original array.";
@@ -40,5 +41,35 @@ describe("countC", () => {
 
   it("should handle uppercase c", () => {
     assert.equal(countC("Circus"), 2);
+  });
+});
+
+describe("countVowels", () => {
+  it("should return zero", () => {
+    assert.equal(countVowels("bczx"), 0);
+  });
+
+  it("should count all vowels", () => {
+    assert.equal(countVowels("Igloo"), 3);
+  });
+
+  describe("uppercase vowels", () => {
+    it("should count all uppercase vowels", () => {
+      assert.equal(countVowels("AEIOU"), 5);
+    });
+
+    it("should only count vowels", () => {
+      assert.equal(countVowels("APPLE"), 2);
+    });
+  });
+
+  describe("lowercase vowels", () => {
+    it("should count all lowercase vowels", () => {
+      assert.equal(countVowels("aeiou"), 5);
+    });
+
+    it("should only count vowels", () => {
+      assert.equal(countVowels("apple"), 2);
+    });
   });
 });
