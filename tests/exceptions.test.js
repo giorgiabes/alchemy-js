@@ -1,5 +1,6 @@
 const throwError = require('../src/exceptions/throwError.js')
 const catchError = require('../src/exceptions/catchError.js')
+const startError = require('../src/exceptions/startError.js')
 const { assert } = require('chai');
 
 describe('throwError', () => {
@@ -41,5 +42,20 @@ describe('catchError', () => {
     it('should return false when no error is thrown', () => {
         let ex = catchError(() => {});
         assert.equal(ex, false);
+    });
+});
+
+describe('startError', () => {
+    it('should throw a subclass of error', () => {
+        let ex;
+        try {
+            startError();
+        }
+        catch (_ex) {
+            ex = _ex;
+        }
+        assert(ex, "did not throw an error");
+        console.log(ex);
+        assert.equal(ex.__proto__.__proto__.constructor, Error);
     });
 });
